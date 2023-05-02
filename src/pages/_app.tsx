@@ -10,7 +10,7 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={` overflow-x-hidden overflow-y-auto ${roboto.className}`}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </main>
   );
 }
