@@ -1,20 +1,45 @@
-import { Reducer, useReducer } from "react";
+import { Reducer, useEffect, useReducer } from "react";
 import TodoList from "@/components/todoList";
 import AddTodoForm from "@/components/addTodoForm";
-import { Action, State } from "../../types/types";
-import { filterTasks } from "../../utils/utils";
-import { initialState, todoReducer } from "../../utils/reducer";
+import { Action, State, Todo } from "../../types/types";
+import { filterTasks, formatDate } from "../../utils/utils";
+import { todoReducer } from "../../utils/reducer";
 
 export default function Home() {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(
-    todoReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer<Reducer<State, Action>>(todoReducer, {
+    todos: [],
+  });
 
-  function handleAddTodo(todoInput: string) {
+  useEffect(() => {
+    async function fetchTodos() {
+      const res = await fetch("http://localhost:3001/todos");
+      const data = await res.json();
+      dispatch({
+        type: "FETCH_TODOS",
+        payload: data,
+      });
+    }
+
+    fetchTodos();
+  }, []);
+
+  async function handleAddTodo(todoInput: string) {
+    const newTodo: Omit<Todo, "id"> = {
+      title: todoInput,
+      created_at: formatDate(new Date()),
+      complete: false,
+    };
+
+    const res = await fetch("http://localhost:3001/todos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newTodo),
+    });
+
+    const data = await res.json();
     dispatch({
       type: "ADD_TODO",
-      payload: todoInput,
+      payload: data,
     });
   }
 

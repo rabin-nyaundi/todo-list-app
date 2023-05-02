@@ -26,16 +26,18 @@ export const initialState: State = {
 
 export function todoReducer(state: State, action: Action): State {
   switch (action.type) {
+    case "FETCH_TODOS":
+      return { todos: action.payload };
     case "ADD_TODO":
-      const newTodo: Todo = {
-        id: state.todos.length + 1,
-        title: action.payload,
-        complete: false,
-        created_at: formatDate(new Date()),
-      };
+      //   const newTodo: Todo = {
+      //     id: state.todos.length + 1,
+      //     title: action.payload,
+      //     complete: false,
+      //     created_at: formatDate(new Date()),
+      //   };
 
       return {
-        todos: [...state.todos, newTodo],
+        todos: [...state.todos, action.payload],
       };
 
     case "TOGGLE_TODO":

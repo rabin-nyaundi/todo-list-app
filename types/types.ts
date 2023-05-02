@@ -19,7 +19,6 @@ export type State = {
 };
 
 export type Action =
-  | { type: "ADD_TODO"; payload: string }
+  | { type: "ADD_TODO"; payload: Todo }
   | { type: "TOGGLE_TODO"; payload: number }
-  | { type: "REMOVE_TODO"; payload: number }
-  | { type: "CLEAR_COMPLETED" };
+  | { type: "FETCH_TODOS"; payload: Todo[] };
