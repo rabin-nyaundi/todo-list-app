@@ -1,4 +1,4 @@
-import { Todo } from "../../utils/reducer";
+import { Todo } from "../../types/types";
 import TodoItem from "./todoItem";
 
 function TodoList({

@@ -1,21 +1,5 @@
+import { Action, State, Todo } from "../types/types";
 import { formatDate } from "./utils";
-
-export type Todo = {
-  id: number;
-  title: string;
-  complete: boolean;
-  created_at: string;
-};
-
-export type State = {
-  todos: Todo[];
-};
-
-export type Action =
-  | { type: "ADD_TODO"; payload: string }
-  | { type: "TOGGLE_TODO"; payload: number }
-  | { type: "REMOVE_TODO"; payload: number }
-  | { type: "CLEAR_COMPLETED" };
 
 export const initialState: State = {
   todos: [

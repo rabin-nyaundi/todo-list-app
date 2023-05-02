@@ -1,10 +1,9 @@
-import ButtonFilled from "@/components/buttonFilled";
-import ButtonOutlined from "@/components/buttonOutlined";
-import TodoList from "@/components/todoList";
-import { filterTasks } from "../../utils/utils";
 import { Reducer, useReducer } from "react";
-import { todoReducer, Action, State, initialState } from "../../utils/reducer";
+import TodoList from "@/components/todoList";
 import AddTodoForm from "@/components/addTodoForm";
+import { Action, State } from "../../types/types";
+import { filterTasks } from "../../utils/utils";
+import { initialState, todoReducer } from "../../utils/reducer";
 
 export default function Home() {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(
@@ -31,18 +30,18 @@ export default function Home() {
       className={`prose flex min-h-screen min-w-full flex-col p-2 lg:p-24 bg-white relative `}
     >
       <div className="flex flex-col">
-        <h2 className="leading-3">To Do List</h2>
-        <hr className="w-full border border-darkGray" />
+        <h2 className="leading-3 lg:text-4xl">To Do List</h2>
+        <hr className="w-full border border-darkGray p-0 m-1" />
       </div>
       <div className="flex flex-col text-black">
-        <details>
+        <details className="px-2">
           <summary>{filterTasks(state.todos, true).length} Done</summary>
           <TodoList
             todos={filterTasks(state.todos, true)}
             handleCompleteTodo={handleCompleteTodo}
           />
         </details>
-        <hr className="w-full border border-darkGray" />
+        <hr className="w-full border border-darkGray p-0 m-1" />
       </div>
       <div className="pb-10 flex flex-col overflow-y-auto">
         <TodoList

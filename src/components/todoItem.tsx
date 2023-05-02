@@ -1,5 +1,5 @@
 import React from "react";
-import { Todo } from "../../utils/reducer";
+import { Todo } from "../../types/types";
 
 function TodoItem({
   todo,
@@ -13,7 +13,7 @@ function TodoItem({
   return (
     <div
       onClick={() => handleCompleteTodo(todo.id)}
-      className="flex items-center m-2 gap-4 cursor-pointer"
+      className="flex items-center gap-4 cursor-pointer"
     >
       <div
         className={`${

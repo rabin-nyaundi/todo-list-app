@@ -1,4 +1,4 @@
-import { Todo } from "./reducer";
+import { Todo } from "./../types/types";
 
 export function formatDate(date: Date) {
   const months = [
@@ -40,5 +40,5 @@ function getSuffix(day: number) {
 }
 
 export function filterTasks(todos: Todo[], status: boolean) {
-  return todos.filter((todo: any) => todo.complete === status);
+  return todos.filter((todo: Todo) => todo.complete === status);
 }
