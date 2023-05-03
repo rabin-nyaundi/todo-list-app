@@ -10,7 +10,11 @@ The app is built by NextJS, TypeScript and Tailwindcss.
 First, install the dependencies:
 
 ```bash
+# Install dependencies
 npm install
+
+# install json-server
+npm install -g json-server
 ```
 
 
