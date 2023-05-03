@@ -4,6 +4,7 @@ import AddTodoForm from "@/components/addTodoForm";
 import { Action, State, Todo } from "../../types/types";
 import { filterTasks, formatDate } from "../../utils/utils";
 import { todoReducer } from "../../utils/reducer";
+import ButtonOutlined from "@/components/buttons/buttonOutlined";
 
 export default function Home() {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(todoReducer, {
@@ -75,8 +76,15 @@ export default function Home() {
         />
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 flex flex-col w-full lg:w-5/6 m-auto p-3 ">
+      <div className="absolute bottom-0 left-0 right-0 flex flex-col w-full lg:w-5/6 m-auto p-3 gap-4 ">
         <AddTodoForm handleSubmitForm={handleAddTodo} />
+
+        {/*  Uncomment below to display th button componets */}
+        {/* <div className="flex w-full gap-8">
+          <span>Demo button components</span>
+          <ButtonOutlined title="Roboto medium 15px Disabled" disabled />
+          <ButtonOutlined title="Roboto medium 15px " />
+        </div> */}
       </div>
     </main>
   );

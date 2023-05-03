@@ -1,5 +1,5 @@
 export type ButtonProps = {
-  disabled: boolean;
+  disabled?: boolean;
   title: string;
 };
 

@@ -1,5 +1,6 @@
 # Todo-list-app
 
+
 This is a simple todo list application
 
 The app is built by NextJS, TypeScript and Tailwindcss.
